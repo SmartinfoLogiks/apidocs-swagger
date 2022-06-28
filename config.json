@@ -1,0 +1,21 @@
+{
+	"title": "SILK APIDocs",
+	"with_group": true,
+	"apis": {
+		"Development": {
+			"demo1": {
+				"description": "dmt",
+				"yaml": "demo1",
+				"postman": "demo1_postman"
+			},
+			"demo2": {}
+		},
+		"Production": {
+			"demo1": {
+				"yaml": "demo1",
+				"postman": "demo1_postman"
+			},
+			"demo2": {}
+		}
+	}
+}

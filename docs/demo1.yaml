@@ -1,0 +1,188 @@
+swagger: "2.0"
+info:
+  title: "SmartinfoLogiks demo API"
+  version: "2.0"
+  description: |
+   Demo API Specification Document. Use this API to enable your channel for demo
+  termsOfService: "https://www.smartinfologiks.com/"
+  contact:
+    email: "business01@smartinfologiks.com"
+  license:
+    name: "SmartinfoLogiks Proprietary Licence"
+    url: "https://www.smartinfologiks.com/"
+host: "api.smartinfoLogiks.com"
+basePath: "/"
+schemes:
+- "https"
+tags:
+- name: "demo API"
+  description: ""
+paths:
+  /services/demo/balancecheck:
+    post:
+      tags:
+      - "Balance Check"
+      summary: "Gets Balance of the customer"
+      description: ""
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              Balance:
+                type: "string"
+      security:
+        - api_key: []
+  /services/demo/operatorlist:
+    get:
+      tags:
+      - "Operator List"
+      summary: "Gets available List of Operators"
+      description: ""
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              operator_alias:
+                type: "string"
+              operator_category:
+                type: "string"
+              operator_code:
+                type: "string"
+              operator_name:
+                type: "string"
+      security:
+        - api_key: []
+  /services/demo:
+    post:
+      tags:
+      - "demo"
+      summary: ""
+      description: ""
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              status:
+                type: "string"
+              mobileno:
+                type: "string"
+              circle:
+                type: "string"
+              operator_code:
+                type: "string"
+              operator:
+                type: "string"
+              demo_amount:
+                type: "string"
+              msg:
+                type: "string"
+      security:
+        - api_key: []
+  /services/demo/getplans:
+    post:
+      tags:
+        - "Plan"
+      summary: "Add new Remitter/Customer"
+      description: ""
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "mobileno"
+        in: "formData"
+        description: " Valid Mobile no of the customer"
+        required: true
+        type: "string"
+      - name: "circle"
+        in: "formData"
+        description: "Valid circle of the mobile number"
+        required: true
+        type: "string"
+      - name: "operator"
+        in: "formData"
+        description: "Valid operator of the mobile number"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              id:
+                type: "string"
+              operator_id:
+                type: "string"
+              circle_id:
+                type: "string"
+              demo_amount:
+                type: "string"
+              demo_talktime:
+                type: "string"
+              demo_validity:
+                type: "string"
+              demo_short_desc:
+                type: "string"
+              demo_long_desc:
+                type: "string"
+              demo_type:
+                type: "string"
+              updated_at:
+                type: "string"
+      security:
+        - api_key: []
+  /services/demo/txstatus:
+    post:
+      tags:
+        - "Transaction Status"
+      summary: "Status of the Transactions"
+      description: ""
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "txid"
+        in: "formData"
+        description: "Valid transaction id"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "object"
+            properties:
+              status:
+                type: "string"
+                description: "success/failure" 
+             
+      security:
+        - api_key: []
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "Authorization"
+    in: "header"
+externalDocs:
+  description: "Find out more about SmartinfoLogiks"
+  url: "https://www.smartinfologiks.com/"
